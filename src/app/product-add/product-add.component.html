@@ -1,0 +1,47 @@
+<div class="card">
+    <div class="card-body">
+      <form [formGroup]="angForm" novalidate>
+        <div class="form-group">
+          <label for="Product-Name">Product Name</label>
+          <input type="text" class="form-control" name="Product-Name" id="Product-Name" placeholder="Product-Name" formControlName="ProductName" #ProductName >
+        </div>
+        <div *ngIf="angForm.controls['ProductName'].invalid && (angForm.controls['ProductName'].dirty || angForm.controls['ProductName'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['ProductName'].errors.required">
+            Product Name is required.
+          </div>
+        </div>  
+
+        <div class="form-group">
+          <label for="Product-Description">Product Description</label>
+          <input type="text" class="form-control" name="Product-Description" id="Product-Description" placeholder="Product-Description" formControlName="ProductDescription" #ProductDescription>
+        </div>
+        <div *ngIf="angForm.controls['ProductDescription'].invalid && (angForm.controls['ProductDescription'].dirty || angForm.controls['ProductDescription'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['ProductDescription'].errors.required">
+            Product Description is required.
+          </div>
+        </div>
+    
+
+        <div class="form-group">
+          <label for="Product-Category">Product Category</label>
+          <input type="text" class="form-control" name="Product-Category" id="Product-Category" placeholder="Product-Category" formControlName="ProductCategory" #ProductCategory>
+        </div>
+        <div *ngIf="angForm.controls['ProductCategory'].invalid && (angForm.controls['ProductCategory'].dirty || angForm.controls['ProductCategory'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['ProductCategory'].errors.required">
+            Product Category is required.
+          </div>
+        </div>
+<!--     
+        <div class="form-group">
+          <label for="Image">Image </label>
+          <input type="file" class="form-control" name="Image" id="Image" placeholder="Image">
+        </div> -->
+        <div class="form-group">
+          <button (click) = "addProduct(ProductName.value, ProductDescription.value, ProductCategory.value)" type="submit" class="btn btn-primary" [disabled]="angForm.pristine || angForm.invalid" >
+            Create Product
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
